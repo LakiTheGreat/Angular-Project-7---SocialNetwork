@@ -1,0 +1,14 @@
+<app-single-post
+  *ngFor="let post of posts.postList"
+  [objava]="post"
+></app-single-post>
+
+<!-- {{ posts.postList.length }}
+{{ posts2.length }} -->
+<button
+  *ngIf="this.params.pageSize < posts2.length"
+  class="btn btn-primary my-5"
+  (click)="onLoadMore()"
+>
+  Load More
+</button>

@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+</div>
+<div class="modal-body">
+  <form novalidate #forma="ngForm">
+    <!-- {{ newComment | json }} -->
+    <small
+      *ngIf="
+        inputComment.touched &&
+        inputComment.errors &&
+        inputComment.errors['required']
+      "
+      class="text-danger"
+      >Comment is required!</small
+    >
+    <textarea
+      placeholder="Comment"
+      class="form-control"
+      name="inputComment"
+      [(ngModel)]="newComment.text"
+      #inputComment="ngModel"
+      required
+    ></textarea>
+
+    <button
+      [disabled]="forma.invalid"
+      (click)="onSave()"
+      (click)="activeModal.close('Close click')"
+      class="btn btn-primary mt-2"
+    >
+      Save
+    </button>
+  </form>
+</div>
